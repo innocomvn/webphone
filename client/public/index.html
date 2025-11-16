@@ -2,16 +2,39 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta name="description" content="WebPhone - Complete SIP Client" />
+    <meta name="theme-color" content="#667eea" />
+    <meta name="description" content="WebPhone - Complete SIP Client with video/audio calling" />
+    <meta name="keywords" content="webphone, sip, webrtc, voip, video call, audio call" />
+    <meta name="author" content="WebPhone Team" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="WebPhone - SIP Client" />
+    <meta property="og:description" content="Complete WebPhone application with video/audio calling via SIP/WebRTC" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:title" content="WebPhone - SIP Client" />
+    <meta property="twitter:description" content="Complete WebPhone application with video/audio calling" />
+
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
     <title>WebPhone - SIP Client</title>
 
     <!-- Load SIPml5 library -->
-    <script src="/SIPml-api.js" type="text/javascript"></script>
+    <script src="%PUBLIC_URL%/SIPml-api.js" type="text/javascript"></script>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>
+      <div style="padding: 40px; text-align: center; font-family: Arial, sans-serif;">
+        <h1>JavaScript Required</h1>
+        <p>You need to enable JavaScript to run this WebPhone application.</p>
+        <p>Please enable JavaScript in your browser settings and reload this page.</p>
+      </div>
+    </noscript>
     <div id="root"></div>
   </body>
 </html>
