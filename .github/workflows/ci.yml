@@ -1,0 +1,97 @@
+name: WebPhone CI/CD
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master, develop ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x, 20.x]
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+
+    - name: Install Dependencies
+      run: |
+        npm ci
+        cd client
+        npm ci
+        cd ..
+
+    - name: Copy Assets
+      run: npm run copy-assets
+
+    - name: Build React App
+      run: cd client && npm run build
+
+    - name: Lint (if configured)
+      run: |
+        if [ -f "client/package.json" ] && grep -q "\"lint\"" client/package.json; then
+          cd client && npm run lint || true
+        fi
+      continue-on-error: true
+
+    - name: Test Backend
+      run: |
+        echo "Backend server test would run here"
+        # npm test (when tests are added)
+
+    - name: Archive Production Build
+      if: matrix.node-version == '18.x'
+      uses: actions/upload-artifact@v3
+      with:
+        name: production-build
+        path: |
+          client/build
+          server
+          package.json
+          SIPml-api.js
+          SIPml.js
+        retention-days: 7
+
+  docker-build:
+    runs-on: ubuntu-latest
+    needs: build-and-test
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Build Docker Image
+      run: |
+        docker build -t webphone:latest .
+
+    - name: Test Docker Image
+      run: |
+        docker run -d --name webphone-test -p 5000:5000 webphone:latest
+        sleep 10
+        curl --fail http://localhost:5000/api/health || exit 1
+        docker stop webphone-test
+        docker rm webphone-test
+
+    - name: Save Docker Image
+      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+      run: |
+        docker save webphone:latest > webphone-image.tar
+
+    - name: Upload Docker Image
+      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+      uses: actions/upload-artifact@v3
+      with:
+        name: docker-image
+        path: webphone-image.tar
+        retention-days: 7

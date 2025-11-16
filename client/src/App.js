@@ -1,12 +1,15 @@
 import React from 'react';
 import WebPhone from './components/WebPhone';
+import ErrorBoundary from './components/ErrorBoundary';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <WebPhone />
-    </div>
+    <ErrorBoundary>
+      <div className="App">
+        <WebPhone />
+      </div>
+    </ErrorBoundary>
   );
 }
 
