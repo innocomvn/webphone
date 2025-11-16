@@ -1,0 +1,164 @@
+.dialpad-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.dialpad-container {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  max-width: 350px;
+  width: 90%;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dialpad-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.dialpad-header h3 {
+  margin: 0;
+  font-size: 20px;
+  color: #333;
+}
+
+.btn-close-dialpad {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #999;
+  cursor: pointer;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.btn-close-dialpad:hover {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.dialpad-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.dialpad-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.dialpad-btn {
+  background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dialpad-btn:hover {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-color: #667eea;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.dialpad-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.dialpad-footer {
+  margin-top: 20px;
+}
+
+.btn-full {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #9e9e9e 0%, #757575 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(158, 158, 158, 0.3);
+}
+
+.btn-full:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(158, 158, 158, 0.4);
+}
+
+.btn-full:active {
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .dialpad-container {
+    padding: 20px;
+    max-width: 320px;
+  }
+
+  .dialpad-header h3 {
+    font-size: 18px;
+  }
+
+  .dialpad-btn {
+    font-size: 20px;
+    padding: 16px;
+  }
+
+  .btn-full {
+    padding: 12px;
+    font-size: 14px;
+  }
+}

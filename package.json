@@ -1,0 +1,33 @@
+{
+  "name": "sipml5-react-webphone",
+  "version": "1.0.0",
+  "description": "Complete WebPhone application with React frontend and Node.js Express backend",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "nodemon server/index.js",
+    "client": "cd client && npm start",
+    "build": "cd client && npm run build",
+    "install-all": "npm install && cd client && npm install"
+  },
+  "keywords": [
+    "webphone",
+    "sip",
+    "webrtc",
+    "react",
+    "sipml5"
+  ],
+  "author": "",
+  "license": "BSD",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "ws": "^8.14.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "concurrently": "^8.2.2"
+  }
+}

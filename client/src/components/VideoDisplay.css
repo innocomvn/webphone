@@ -1,0 +1,162 @@
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 15px;
+  background-color: #000;
+  transition: all 0.5s ease;
+}
+
+.video-container.active {
+  height: 400px;
+  padding-bottom: 0;
+}
+
+.video-remote-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.video-remote {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-color: #000;
+}
+
+.video-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  color: white;
+  z-index: 2;
+}
+
+.remote-identity {
+  font-size: 18px;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.video-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+}
+
+.placeholder-icon {
+  font-size: 64px;
+  margin-bottom: 15px;
+  opacity: 0.5;
+}
+
+.placeholder-text {
+  font-size: 16px;
+  color: #999;
+}
+
+.video-local-wrapper {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 150px;
+  height: 112px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 3px solid white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  z-index: 3;
+  background-color: #000;
+}
+
+.video-local {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1); /* Mirror effect */
+}
+
+.local-label {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  z-index: 4;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.video-container.active {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .video-container.active {
+    height: 300px;
+  }
+
+  .video-local-wrapper {
+    width: 100px;
+    height: 75px;
+    top: 15px;
+    right: 15px;
+    border-width: 2px;
+  }
+
+  .remote-identity {
+    font-size: 16px;
+  }
+
+  .placeholder-icon {
+    font-size: 48px;
+  }
+
+  .placeholder-text {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-container.active {
+    height: 250px;
+  }
+
+  .video-local-wrapper {
+    width: 80px;
+    height: 60px;
+    top: 10px;
+    right: 10px;
+  }
+
+  .local-label {
+    font-size: 9px;
+    padding: 2px 8px;
+  }
+}
