@@ -5,9 +5,9 @@
 ![Node.js](https://img.shields.io/badge/Node.js-18.x-green.svg)
 ![License](https://img.shields.io/badge/license-BSD-orange.svg)
 
-> **Ứng dụng WebPhone hoàn chỉnh với React và Node.js** - Gọi điện video/audio qua SIP/WebRTC trực tiếp trên trình duyệt, không cần cài đặt plugin.
+> **Ứng dụng WebPhone hoàn chỉnh với React và Node.js** - Gọi điện video/audio qua SIP/WebRTC trực tiếp trên trình duyệt và mobile (Android/iOS), không cần cài đặt plugin.
 
-[🚀 Quick Start](#-quick-start) • [📖 Documentation](#-documentation) • [🐳 Docker](#-docker) • [🌟 Features](#-features)
+[🚀 Quick Start](#-quick-start) • [📖 Documentation](#-documentation) • [🐳 Docker](#-docker) • [📱 Mobile App](#-mobile-app) • [🌟 Features](#-features)
 
 ---
 
@@ -21,6 +21,7 @@
 - 💾 **Persistent Settings** - Tự động lưu cấu hình SIP
 - ⚡ **No Interruption** - State management tối ưu, không bị ngắt cuộc gọi
 - 🐳 **Docker Ready** - Deploy nhanh chóng với Docker
+- 📱 **Mobile Apps** - Native Android & iOS apps với Capacitor
 
 ## 🚀 Quick Start
 
@@ -66,6 +67,7 @@ git clone https://github.com/innocomvn/webphone.git && cd webphone && npm run se
 | **SETUP.md** | Hướng dẫn cài đặt nhanh (Tiếng Việt) | [📄 Xem](SETUP.md) |
 | **INSTALL.md** | Hướng dẫn cài đặt chi tiết | [📄 Xem](INSTALL.md) |
 | **DOCKER.md** | Deploy với Docker | [🐳 Xem](DOCKER.md) |
+| **MOBILE.md** | Build Android & iOS apps | [📱 Xem](MOBILE.md) |
 | **README_WEBPHONE.md** | Tài liệu đầy đủ (English) | [📄 Xem](README_WEBPHONE.md) |
 
 ## 🌟 Features
@@ -169,6 +171,49 @@ docker run -d -p 5000:5000 webphone:latest
 ```
 
 Chi tiết xem [DOCKER.md](DOCKER.md)
+
+## 📱 Mobile App
+
+WebPhone có thể chạy như **native mobile app** trên Android và iOS!
+
+### Quick Build
+
+```bash
+cd client
+
+# Build Android
+npm install
+npm run build:mobile
+npx cap open android
+# Build trong Android Studio
+
+# Build iOS (macOS only)
+npm run build:mobile
+npx cap open ios
+# Build trong Xcode
+```
+
+### Hoặc dùng build script
+
+```bash
+cd client
+../mobile-build.sh android      # Build Android APK
+../mobile-build.sh ios          # Open Xcode (macOS)
+../mobile-build.sh both         # Build cả hai
+```
+
+Chi tiết xem [MOBILE.md](MOBILE.md)
+
+### Mobile Features
+
+- ✅ Native Android & iOS apps
+- ✅ Camera & Microphone access
+- ✅ Push notifications
+- ✅ Background call handling
+- ✅ Network detection
+- ✅ Native status bar & splash screen
+- ✅ Deep linking support
+- ✅ Offline mode ready
 
 ## 🔧 Development
 
