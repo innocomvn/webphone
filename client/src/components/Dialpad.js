@@ -35,7 +35,7 @@ const Dialpad = ({ onDigit, onClose }) => {
                   className="dialpad-btn"
                   onClick={() => handleDigitClick(digit)}
                 >
-                  {digit}
+                  <span className="dialpad-digit">{digit}</span>
                 </button>
               ))}
             </div>

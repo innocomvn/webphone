@@ -1,57 +1,92 @@
 .webphone-container {
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  padding: 30px;
-  max-width: 800px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 30px;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25),
+              0 0 0 1px rgba(255, 255, 255, 0.3);
+  padding: 40px;
+  max-width: 850px;
   width: 100%;
-  min-height: 600px;
+  min-height: 650px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: containerFadeIn 0.5s ease-out;
+}
+
+@keyframes containerFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .webphone-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
-  padding-bottom: 20px;
-  border-bottom: 2px solid #f0f0f0;
+  margin-bottom: 35px;
+  padding-bottom: 25px;
+  border-bottom: 2px solid rgba(102, 126, 234, 0.1);
+  background: linear-gradient(90deg, transparent 0%, rgba(102, 126, 234, 0.03) 50%, transparent 100%);
+  padding: 20px;
+  border-radius: 15px;
 }
 
 .webphone-header h1 {
-  font-size: 28px;
-  color: #333;
+  font-size: 32px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.5px;
 }
 
 .status-indicator {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-size: 14px;
-  color: #666;
+  font-weight: 600;
+  color: #555;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .status-dot {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   animation: pulse 2s infinite;
+  box-shadow: 0 0 10px currentColor;
 }
 
 .status-dot.registered {
   background-color: #4caf50;
+  box-shadow: 0 0 15px rgba(76, 175, 80, 0.6);
 }
 
 .status-dot.unregistered {
   background-color: #f44336;
+  box-shadow: 0 0 15px rgba(244, 67, 54, 0.6);
 }
 
 @keyframes pulse {
   0%, 100% {
     opacity: 1;
+    transform: scale(1);
   }
   50% {
-    opacity: 0.5;
+    opacity: 0.7;
+    transform: scale(1.1);
   }
 }
 
@@ -66,44 +101,52 @@
 }
 
 .status-message {
-  padding: 12px 20px;
-  border-radius: 8px;
-  font-size: 14px;
+  padding: 16px 24px;
+  border-radius: 15px;
+  font-size: 15px;
+  font-weight: 500;
   margin-bottom: 15px;
+  animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .status-message.info {
-  background-color: #e3f2fd;
+  background: linear-gradient(135deg, rgba(33, 150, 243, 0.1) 0%, rgba(25, 118, 210, 0.15) 100%);
   color: #1976d2;
-  border: 1px solid #90caf9;
+  border: 2px solid rgba(33, 150, 243, 0.3);
+  box-shadow: 0 4px 15px rgba(33, 150, 243, 0.1);
 }
 
 .status-message.error {
-  background-color: #ffebee;
+  background: linear-gradient(135deg, rgba(244, 67, 54, 0.1) 0%, rgba(211, 47, 47, 0.15) 100%);
   color: #c62828;
-  border: 1px solid #ef9a9a;
+  border: 2px solid rgba(244, 67, 54, 0.3);
+  box-shadow: 0 4px 15px rgba(244, 67, 54, 0.1);
 }
 
 .call-status {
   text-align: center;
-  padding: 15px;
+  padding: 18px 30px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  border-radius: 10px;
-  font-size: 16px;
-  font-weight: 500;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-  animation: slideIn 0.3s ease-out;
+  border-radius: 18px;
+  font-size: 17px;
+  font-weight: 600;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  letter-spacing: 0.3px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-15px) scale(0.98);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -121,39 +164,52 @@
 
 .phone-input {
   width: 100%;
-  padding: 15px 50px 15px 20px;
-  border: 2px solid #e0e0e0;
-  border-radius: 12px;
-  font-size: 18px;
-  transition: all 0.3s ease;
+  padding: 18px 50px 18px 24px;
+  border: 2px solid rgba(102, 126, 234, 0.2);
+  border-radius: 16px;
+  font-size: 20px;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   outline: none;
+  background: rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.5px;
+}
+
+.phone-input:hover {
+  border-color: rgba(102, 126, 234, 0.4);
+  background: rgba(255, 255, 255, 0.95);
 }
 
 .phone-input:focus {
   border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15),
+              0 8px 20px rgba(102, 126, 234, 0.1);
+  transform: translateY(-1px);
 }
 
 .btn-clear {
   position: absolute;
   right: 15px;
-  background: none;
+  background: rgba(244, 67, 54, 0.1);
   border: none;
-  font-size: 20px;
-  color: #999;
+  font-size: 18px;
+  color: #f44336;
   cursor: pointer;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-clear:hover {
-  background-color: #f5f5f5;
-  color: #333;
+  background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
+  color: white;
+  transform: rotate(90deg) scale(1.1);
+  box-shadow: 0 4px 12px rgba(244, 67, 54, 0.3);
 }
 
 .video-toggle {
@@ -164,17 +220,30 @@
 .checkbox-label {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   cursor: pointer;
-  font-size: 14px;
-  color: #666;
+  font-size: 15px;
+  font-weight: 500;
+  color: #555;
   user-select: none;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 12px 20px;
+  border-radius: 25px;
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  transition: all 0.3s ease;
+}
+
+.checkbox-label:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(102, 126, 234, 0.4);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
 }
 
 .checkbox-label input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
+  accent-color: #667eea;
 }
 
 /* Responsive */
